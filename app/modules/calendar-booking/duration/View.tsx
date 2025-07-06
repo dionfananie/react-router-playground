@@ -103,9 +103,9 @@ const Duration = () => {
                   <FormControl>
                     <Checkbox
                       checked={field.value}
-                      onCheckedChange={(checked) => {
-                        console.log(checked);
-                      }}
+                      // onCheckedChange={(checked) => {
+                      //   console.log(checked);
+                      // }}
                     />
                   </FormControl>
                   <FormLabel className="text-sm font-normal">

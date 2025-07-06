@@ -5,13 +5,11 @@ import useBookingStore from "~/stores/booking";
 const useView = () => {
   const form = useForm();
   const updateDuration = useBookingStore((state) => state.updateDuration);
-  const updateSession = useBookingStore((state) => state.updateDuration);
+  const updateSession = useBookingStore((state) => state.updateSession);
   const updateAllowTour = useBookingStore((state) => state.updateAllowTour);
-  const currDur = useBookingStore((state) => state.duration);
   const { subscribe } = form;
 
   useEffect(() => {
-    // make sure to unsubscribe;
     const callback = subscribe({
       formState: {
         values: true,

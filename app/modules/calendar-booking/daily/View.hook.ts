@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import useBookingStore from "~/stores/booking";
 import { DAY_LIST, DURATION_LIST } from "~/constants/time";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import type { ScheduleDay } from "~/types/schedule";
 import type { EnableDay, SetScheduleDay } from "./View.types";
 
@@ -16,16 +16,18 @@ const initialDays: Record<string, ScheduleDay> = DAY_LIST.reduce((acc, day) => {
 
 const useView = () => {
   const duration = useBookingStore((state) => state.duration);
+  const session = useBookingStore((state) => state.session);
 
   const listDuration = DURATION_LIST.find((item) => item.value === duration);
   const [scheduleDay, setScheduleDay] =
     useState<Record<string, ScheduleDay>>(initialDays);
-
-  const timeList = generateTimeSlots(
-    7 * 60,
-    19 * 60,
-    listDuration?.duration || 30
+  console.log(scheduleDay);
+  const interval = (listDuration?.duration || 15) * session;
+  const timeList = useMemo(
+    () => generateTimeSlots(7 * 60, 19 * 60, interval),
+    [listDuration, session]
   );
+
   const FormSchema = z.object({
     username: z.string().min(2, {
       message: "Username must be at least 2 characters.",
