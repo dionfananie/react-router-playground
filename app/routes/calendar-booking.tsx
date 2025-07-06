@@ -19,6 +19,7 @@ import {
 import { Checkbox } from "~/components/ui/checkbox";
 import Calendar from "~/components/Calendar";
 import Daily from "~/modules/daily";
+import { DURATION_LIST } from "~/constants/time";
 
 const CalendarBooking = () => {
   const form = useForm();
@@ -42,9 +43,13 @@ const CalendarBooking = () => {
                     <SelectValue placeholder="Select time duration" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="light">Light</SelectItem>
-                    <SelectItem value="dark">Dark</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
+                    {DURATION_LIST.map((item) => {
+                      return (
+                        <SelectItem value={item.value}>
+                          {item.duration}
+                        </SelectItem>
+                      );
+                    })}
                   </SelectContent>
                 </Select>
               </div>
