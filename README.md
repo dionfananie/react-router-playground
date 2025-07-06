@@ -84,4 +84,8 @@ This template comes with [Tailwind CSS](https://tailwindcss.com/) already config
 
 ---
 
+## Screenshots
+
+![App Screenshot](https://ibb.co/7J4T50St)
+
 Built with ❤️ using React Router.
