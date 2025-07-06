@@ -28,6 +28,7 @@ function Daily() {
     onEnableDay,
     onSetSchedule,
     onAddSession,
+    onDeleteSession,
   } = useView();
 
   return (
@@ -41,7 +42,7 @@ function Daily() {
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
             <FormField
               control={form.control}
-              name="username"
+              name="schedule"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
@@ -52,6 +53,7 @@ function Daily() {
                       onEnableDay={onEnableDay}
                       onSetSchedule={onSetSchedule}
                       onAddSession={onAddSession}
+                      onDeleteSession={onDeleteSession}
                     />
                   </FormControl>
                   <FormMessage />

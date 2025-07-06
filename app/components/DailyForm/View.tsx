@@ -20,6 +20,7 @@ const DailyForm = ({
   onEnableDay,
   scheduleDay,
   onAddSession,
+  onDeleteSession,
 }: DailyFormProps) => {
   return (
     <>
@@ -125,6 +126,13 @@ const DailyForm = ({
                           variant="secondary"
                           size="icon"
                           className="size-8"
+                          onClick={() => {
+                            onDeleteSession({
+                              day: value,
+                              id: sessionDay.id,
+                              timeStart: "",
+                            });
+                          }}
                           disabled={disabledMode}
                         >
                           <Trash2 />

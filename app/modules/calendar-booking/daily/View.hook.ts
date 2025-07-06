@@ -26,27 +26,14 @@ const useView = () => {
   const [scheduleDay, setScheduleDay] =
     useState<Record<string, ScheduleDay>>(initialDays);
 
-  const [sessionList, setSessionList] =
-    useState<Record<string, SessionList[]>>();
-
   const interval = (listDuration?.duration || 15) * session;
   const timeList = useMemo(
     () => generateTimeSlots(7 * 60, 19 * 60, interval),
     [listDuration, session]
   );
 
-  const FormSchema = z.object({
-    username: z.string().min(2, {
-      message: "Username must be at least 2 characters.",
-    }),
-  });
-
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      username: "",
-    },
-  });
+  const FormSchema = z.object({});
+  const form = useForm();
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     toast("You submitted the following values", {
@@ -88,15 +75,26 @@ const useView = () => {
       },
     }));
   };
+
+  const onDeleteSession = (data: SetScheduleDay) => {
+    setScheduleDay((v) => ({
+      ...v,
+      [data.day]: {
+        ...v[data.day],
+        session: v[data.day].session.filter((item) => item.id !== data.id),
+      },
+    }));
+  };
+
   return {
     timeList,
     form,
-    sessionList,
     scheduleDay,
     onSubmit,
     onEnableDay,
     onSetSchedule,
     onAddSession,
+    onDeleteSession,
   };
 };
 

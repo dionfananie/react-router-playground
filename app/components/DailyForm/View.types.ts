@@ -11,6 +11,7 @@ export interface DailyFormProps {
   dayList: DayList;
   onSetSchedule: (data: SetScheduleDay) => void;
   onAddSession: (data: SetScheduleDay) => void;
+  onDeleteSession: (data: SetScheduleDay) => void;
   onEnableDay: (data: EnableDay) => void;
   scheduleDay: Record<string, ScheduleDay>;
 }
