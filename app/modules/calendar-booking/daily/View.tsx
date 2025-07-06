@@ -20,8 +20,15 @@ import { DAY_LIST } from "~/constants/time";
 import useView from "./View.hook";
 
 function Daily() {
-  const { timeList, form, scheduleDay, onSubmit, onEnableDay, onSetSchedule } =
-    useView();
+  const {
+    timeList,
+    form,
+    scheduleDay,
+    onSubmit,
+    onEnableDay,
+    onSetSchedule,
+    onAddSession,
+  } = useView();
 
   return (
     <Card className="mt-4">
@@ -44,6 +51,7 @@ function Daily() {
                       timeList={timeList}
                       onEnableDay={onEnableDay}
                       onSetSchedule={onSetSchedule}
+                      onAddSession={onAddSession}
                     />
                   </FormControl>
                   <FormMessage />

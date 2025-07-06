@@ -1,12 +1,37 @@
 export const DAY_LIST_UNAVAILABLE = ["Saturday", "Sunday"];
 export const DAY_LIST = [
-  { value: "day-1", name: "Monday", status: 1 },
-  { value: "day-2", name: "Tuesday", status: 1 },
-  { value: "day-3", name: "Wednesday", status: 1 },
-  { value: "day-4", name: "Thursday", status: 1 },
-  { value: "day-5", name: "Friday", status: 1 },
-  { value: "day-6", name: "Saturday", status: 0 },
-  { value: "day-7", name: "Sunday", status: 0 },
+  {
+    value: "day-1",
+    name: "Monday",
+    status: 1,
+    session: [{ id: "session-1", timeStart: "" }],
+  },
+  {
+    value: "day-2",
+    name: "Tuesday",
+    status: 1,
+    session: [{ id: "session-1", timeStart: "" }],
+  },
+  {
+    value: "day-3",
+    name: "Wednesday",
+    status: 1,
+    session: [{ id: "session-1", timeStart: "" }],
+  },
+  {
+    value: "day-4",
+    name: "Thursday",
+    status: 1,
+    session: [{ id: "session-1", timeStart: "" }],
+  },
+  {
+    value: "day-5",
+    name: "Friday",
+    status: 1,
+    session: [{ id: "session-1", timeStart: "" }],
+  },
+  { value: "day-6", name: "Saturday", status: 0, session: [] },
+  { value: "day-7", name: "Sunday", status: 0, session: [] },
 ];
 
 export const DURATION_LIST = [

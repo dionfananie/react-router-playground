@@ -5,4 +5,9 @@ export interface EnableDay {
 export interface SetScheduleDay {
   day: string;
   timeStart: string;
+  id: string;
+}
+export interface SessionList {
+  sessionKey: string;
+  value: string;
 }
