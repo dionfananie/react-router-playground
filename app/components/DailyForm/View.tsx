@@ -11,10 +11,21 @@ import { Label } from "~/components/ui/label";
 import { CirclePlus, Trash2 } from "lucide-react";
 import { Button } from "../ui/button";
 
-const DailyForm = ({ dayList, timeList }: DailyFormProps) => {
+const DailyForm = ({
+  dayList,
+  timeList,
+  onSetSchedule,
+  onEnableDay,
+  scheduleDay,
+}: DailyFormProps) => {
+  console.log(scheduleDay);
+  console.log(dayList);
+
   return (
     <>
       {dayList.map((item, idx) => {
+        const disabledMode = !scheduleDay[item.value].checked;
+
         return (
           <div
             key={`${item.name}-${item.value}-${idx}`}
@@ -22,20 +33,36 @@ const DailyForm = ({ dayList, timeList }: DailyFormProps) => {
             style={{ gridTemplateColumns: "120px 400px auto" }}
           >
             <div className="flex items-center gap-3">
-              <Checkbox id={item.value} disabled={!item.status} />
+              <Checkbox
+                id={item.value}
+                disabled={!item.status}
+                onCheckedChange={(v) => {
+                  onEnableDay({ day: item.value, enable: v ? true : false });
+                }}
+              />
               <Label htmlFor={item.value}>{item.name}</Label>
             </div>
             {item.status ? (
               <>
                 <div className="flex items-center gap-3">
-                  <Select>
-                    <SelectTrigger className="w-[280px]">
+                  <Select
+                    onValueChange={(v) => {
+                      onSetSchedule({ day: item.value, timeStart: v });
+                    }}
+                  >
+                    <SelectTrigger
+                      className="w-[280px]"
+                      disabled={disabledMode}
+                    >
                       <SelectValue placeholder="Time start session" />
                     </SelectTrigger>
                     <SelectContent>
                       {timeList.map((item) => {
                         return (
-                          <SelectItem key={item.value} value={item.value}>
+                          <SelectItem
+                            key={item.value}
+                            value={String(item.value)}
+                          >
                             {item.time}
                           </SelectItem>
                         );
@@ -43,8 +70,11 @@ const DailyForm = ({ dayList, timeList }: DailyFormProps) => {
                     </SelectContent>
                   </Select>
                   -
-                  <Select>
-                    <SelectTrigger className="w-[280px]">
+                  <Select value={scheduleDay[item.value].timeStart}>
+                    <SelectTrigger
+                      className="w-[280px]"
+                      disabled={disabledMode}
+                    >
                       <SelectValue placeholder="Time end session" />
                     </SelectTrigger>
                     <SelectContent>
@@ -53,7 +83,7 @@ const DailyForm = ({ dayList, timeList }: DailyFormProps) => {
                           <SelectItem
                             disabled
                             key={item.value}
-                            value={item.value}
+                            value={String(item.value)}
                           >
                             {item.timeEnd}
                           </SelectItem>
@@ -63,10 +93,20 @@ const DailyForm = ({ dayList, timeList }: DailyFormProps) => {
                   </Select>
                 </div>
                 <div className="flex items-center gap-1 justify-end">
-                  <Button variant="secondary" size="icon" className="size-8">
+                  <Button
+                    variant="secondary"
+                    size="icon"
+                    className="size-8"
+                    disabled={disabledMode}
+                  >
                     <CirclePlus />
                   </Button>
-                  <Button variant="secondary" size="icon" className="size-8">
+                  <Button
+                    variant="secondary"
+                    size="icon"
+                    className="size-8"
+                    disabled={disabledMode}
+                  >
                     <Trash2 />
                   </Button>
                 </div>

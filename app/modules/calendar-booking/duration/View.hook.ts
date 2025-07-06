@@ -21,7 +21,6 @@ const useView = () => {
         if (duration) updateDuration(duration);
         if (session) updateSession(session);
         if (tour) updateAllowTour(tour);
-        console.log(values);
       },
     });
 
