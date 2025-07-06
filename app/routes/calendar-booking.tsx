@@ -1,4 +1,5 @@
 import Calendar from "~/components/Calendar";
+import NoSSR from "~/components/noSSR";
 import Daily from "~/modules/calendar-booking/daily";
 import Duration from "~/modules/calendar-booking/duration";
 
@@ -10,7 +11,9 @@ const CalendarBooking = () => {
           <Duration />
           <Daily />
         </div>
-        <Calendar />
+        <NoSSR loading={<p>loading...</p>}>
+          <Calendar />
+        </NoSSR>
       </div>
     </div>
   );
