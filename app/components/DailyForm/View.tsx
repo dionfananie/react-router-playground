@@ -33,7 +33,9 @@ const DailyForm = ({ dayList, timeList }: DailyFormProps) => {
                 <SelectContent>
                   {timeList.map((item) => {
                     return (
-                      <SelectItem value={item.value}>{item.time}</SelectItem>
+                      <SelectItem key={item.value} value={item.value}>
+                        {item.time}
+                      </SelectItem>
                     );
                   })}
                 </SelectContent>
@@ -46,7 +48,9 @@ const DailyForm = ({ dayList, timeList }: DailyFormProps) => {
                 <SelectContent>
                   {timeList.map((item) => {
                     return (
-                      <SelectItem value={item.value}>{item.timeEnd}</SelectItem>
+                      <SelectItem disabled key={item.value} value={item.value}>
+                        {item.timeEnd}
+                      </SelectItem>
                     );
                   })}
                 </SelectContent>

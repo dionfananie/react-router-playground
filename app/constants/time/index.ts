@@ -16,3 +16,5 @@ export const DURATION_LIST = [
   { value: "duration-4", duration: 60 },
   { value: "duration-5", duration: 90 },
 ];
+
+export const DEFAULT_DURATION_LIST = DURATION_LIST[0].value;

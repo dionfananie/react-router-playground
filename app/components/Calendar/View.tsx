@@ -11,6 +11,7 @@ export default function Calendar() {
             plugins={[dayGridPlugin]}
             initialView="dayGridMonth"
             weekends={false}
+            contentHeight={500}
             events={[
               { title: "event 1", date: "2024-09-01" },
               { title: "event 2", date: "2024-09-02" },
