@@ -20,7 +20,6 @@ const useView = () => {
   const listDuration = DURATION_LIST.find((item) => item.value === duration);
   const [scheduleDay, setScheduleDay] =
     useState<Record<string, ScheduleDay>>(initialDays);
-  console.log(scheduleDay);
 
   const timeList = generateTimeSlots(
     7 * 60,

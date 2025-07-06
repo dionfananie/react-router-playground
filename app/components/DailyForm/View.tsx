@@ -18,9 +18,6 @@ const DailyForm = ({
   onEnableDay,
   scheduleDay,
 }: DailyFormProps) => {
-  console.log(scheduleDay);
-  console.log(dayList);
-
   return (
     <>
       {dayList.map((item, idx) => {
