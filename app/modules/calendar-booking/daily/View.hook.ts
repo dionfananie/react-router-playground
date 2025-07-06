@@ -61,8 +61,6 @@ const useView = () => {
     }));
   };
   const onSetSchedule = (data: SetScheduleDay) => {
-    console.log(data);
-
     setScheduleDay((v) => {
       const currData = v[data.day];
       const updatedSession = currData.session.map((session) => {
